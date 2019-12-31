@@ -12,7 +12,8 @@ export default function hideAllPoppers(exclude) {
       settings: {
         appendTo,
         hideOnClick,
-        trigger
+        trigger,
+        hideDuration
       }
     } = refData
 
@@ -25,7 +26,7 @@ export default function hideAllPoppers(exclude) {
 
     if (isHideOnClick && isNotCurrentRef) {
       refData.settings.onRequestClose();
-      tippyInstance.hide(popper)
+      tippyInstance.hide(popper, hideDuration)
     }
   })
 }

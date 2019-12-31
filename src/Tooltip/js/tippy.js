@@ -4,6 +4,7 @@ import {
   Selectors,
   Defaults
 } from './core/globals'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
 import init from './core/init'
@@ -142,6 +143,9 @@ class Tippy {
         tooltipContent,
       );
     } else {
+      if (typeof updatedContent === 'string') {
+        updatedContent = React.createElement('div', {}, updatedContent)
+      }
       ReactDOM.render(
         updatedContent,
         tooltipContent,
