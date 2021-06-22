@@ -178,12 +178,16 @@ class Tooltip extends Component {
   }
 
   _initTippy() {
-      if (typeof window === 'undefined' || typeof document === 'undefined' || !Browser.SUPPORTED) {
+    if (typeof window === 'undefined' || typeof document === 'undefined' || !Browser.SUPPORTED) {
       return;
     }
     if (!this.props.disabled) {
-      if (this.props.title && this.tooltipDOM) {
-        this.tooltipDOM.setAttribute('title', this.props.title);
+      if (this.tooltipDOM && this.props.title) {
+        try {
+          this.tooltipDOM.setAttribute('title', this.props.title);
+          } catch(e) {
+            return;
+          }
       }
       this.tippy = tippy(this.tooltipDOM, {
         disabled: this.props.disabled,
